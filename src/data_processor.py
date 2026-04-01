@@ -1,5 +1,5 @@
+""
 import pandas as pd
-
 
 def clean_yield_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
@@ -15,6 +15,6 @@ def merge_yield_curves(dfs: dict) -> pd.DataFrame:
         if merged is None:
             merged = df
         else:
-            merged = pd.merge(merged, df, on="date", how="inner")
-
-    return merged.set_index("date")
+            merged = pd.merge(merged, df, on="date")
+    return merged.sort_values("date")
+  ""
